@@ -1,8 +1,8 @@
-# 🐳 Docker & Rocky Linux Learning Journey
+# 🐳 Docker & Red Hat Enterprise Linux Learning Journey
 
 **From Windows to Containers: A Hands-On Learning Adventure**
 
-Welcome to your journey from Windows IT professional to Linux container expert! This course is designed specifically for IT operations team members who are comfortable with Windows environments and want to master Docker containers on Rocky Linux 9.
+Welcome to your journey from Windows IT professional to Linux container expert! This course is designed specifically for IT operations team members who are comfortable with Windows environments and want to master Docker containers on Red Hat Enterprise Linux (using UBI9).
 
 ## 🎯 Course Overview
 
@@ -16,7 +16,7 @@ This isn't just another technical manual - it's your guided adventure into the w
 
 ### What You'll Learn
 By the end of this journey, you'll be able to:
-- Navigate Rocky Linux 9 like a pro (goodbye C:\ drives!)
+- Navigate Red Hat Enterprise Linux like a pro (goodbye C:\ drives!)
 - Deploy and manage Docker containers confidently
 - Build custom container images for web applications
 - Orchestrate multi-container applications
@@ -33,12 +33,12 @@ By the end of this journey, you'll be able to:
 ### Launch Your Learning Environment
 1. **Fork this repository** to your GitHub account
 2. **Open in GitHub Codespaces** - click the green "Code" button and select "Create codespace on main"
-3. **Wait for the magic** - your Rocky Linux 9 environment with Docker will be ready in a few minutes
+3. **Wait for the magic** - your Red Hat Enterprise Linux environment with Docker will be ready in a few minutes
 4. **Start with Module 1** and begin your container journey!
 
 ## 📚 Course Modules
 
-### 🚀 [Module 1: Welcome to Rocky Linux - Your New Command Center](modules/01-rocky-linux-basics/)
+### 🚀 [Module 1: Welcome to Red Hat Enterprise Linux - Your New Command Center](modules/01-rocky-linux-basics/)
 *"Trading PowerShell for Bash - It's not so scary!"*
 - Windows vs Linux command translations
 - File system navigation and permissions
@@ -121,7 +121,7 @@ Put it all together by deploying a complete web service stack including:
 
 ## 📋 Course Progress Tracker
 
-- [ ] Module 1: Rocky Linux Basics
+- [ ] Module 1: Red Hat Enterprise Linux Basics
 - [ ] Module 2: Docker Fundamentals  
 - [ ] Module 3: Building Images
 - [ ] Module 4: Networking & Storage

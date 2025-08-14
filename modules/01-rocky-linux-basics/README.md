@@ -1,8 +1,8 @@
-# 🚀 Module 1: Welcome to Rocky Linux - Your New Command Center
+# 🚀 Module 1: Welcome to Red Hat Enterprise Linux - Your New Command Center
 
 *"Trading PowerShell for Bash - It's not so scary!"*
 
-Welcome to your first step in the container journey! If you're coming from a Windows background, you might be feeling a bit like you've landed on an alien planet. Don't worry - by the end of this module, you'll be navigating Rocky Linux like you've been doing it for years.
+Welcome to your first step in the container journey! If you're coming from a Windows background, you might be feeling a bit like you've landed on an alien planet. Don't worry - by the end of this module, you'll be navigating Red Hat Enterprise Linux like you've been doing it for years.
 
 ## 🎯 Learning Objectives
 

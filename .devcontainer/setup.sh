@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# Docker & Rocky Linux Learning Environment Setup Script
-# This script configures the Rocky Linux 9 environment for the learning course
+# Docker & Red Hat Enterprise Linux Learning Environment Setup Script
+# This script configures the Red Hat Enterprise Linux (UBI9) environment for the learning course
 
 set -e
 
-echo "🚀 Setting up your Docker & Rocky Linux Learning Environment..."
+echo "🚀 Setting up your Docker & Red Hat Enterprise Linux Learning Environment..."
 
 # Update system packages
 echo "📦 Updating system packages..."
@@ -84,9 +84,9 @@ EOF
 # Create a welcome message
 echo "🎉 Creating welcome message..."
 cat > /home/vscode/.welcome << 'EOF'
-🐳 Welcome to your Docker & Rocky Linux Learning Environment! 🐳
+🐳 Welcome to your Docker & Red Hat Enterprise Linux Learning Environment! 🐳
 
-You're now running Rocky Linux 9 with Docker ready to go!
+You're now running Red Hat Enterprise Linux (UBI9) with Docker ready to go!
 
 Quick Start Commands:
   📁 dir          - List files (like Windows dir command)
@@ -116,7 +116,7 @@ cat > /etc/motd << 'EOF'
 | |_| | (_) | (__|   <  __/ |   | |___| | | | | |_| |>  < 
 |____/ \___/ \___|_|\_\___|_|   |_____|_|_| |_|\__,_/_/\_\
 
-🐳 Docker & Rocky Linux Learning Environment 🐳
+🐳 Docker & Red Hat Enterprise Linux Learning Environment 🐳
 Ready for your container adventure!
 
 EOF
@@ -218,7 +218,7 @@ chmod +x /home/vscode/test-environment.sh
 chown vscode:vscode /home/vscode/test-environment.sh
 
 echo ""
-echo "🎉 Setup complete! Your Docker & Rocky Linux learning environment is ready!"
+echo "🎉 Setup complete! Your Docker & Red Hat Enterprise Linux learning environment is ready!"
 echo ""
 echo "🚀 Quick start:"
 echo "  - Run 'test-environment.sh' to verify everything works"
