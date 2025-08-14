@@ -1,0 +1,81 @@
+{
+  "name": "Docker & Rocky Linux Learning Environment",
+  "image": "rockylinux:9",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {
+      "version": "latest",
+      "enableNonRootDocker": "true",
+      "moby": "true"
+    },
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "installZsh": "true",
+      "configureZshAsDefaultShell": "true",
+      "installOhMyZsh": "true",
+      "upgradePackages": "true",
+      "username": "vscode",
+      "uid": "1000",
+      "gid": "1000"
+    },
+    "ghcr.io/devcontainers/features/git:1": {
+      "version": "latest",
+      "ppa": "false"
+    }
+  },
+  "runArgs": [
+    "--privileged"
+  ],
+  "mounts": [
+    "source=dind-var-lib-docker,target=/var/lib/docker,type=volume"
+  ],
+  "postCreateCommand": "bash .devcontainer/setup.sh",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.vscode-docker",
+        "redhat.vscode-yaml",
+        "ms-vscode.vscode-json",
+        "streetsidesoftware.code-spell-checker",
+        "ms-vscode.theme-tomorrowkit",
+        "pkief.material-icon-theme"
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "zsh",
+        "terminal.integrated.profiles.linux": {
+          "zsh": {
+            "path": "/usr/bin/zsh"
+          }
+        },
+        "workbench.colorTheme": "Tomorrow Night Blue",
+        "workbench.iconTheme": "material-icon-theme",
+        "editor.fontSize": 14,
+        "terminal.integrated.fontSize": 14,
+        "docker.showStartPage": false
+      }
+    }
+  },
+  "forwardPorts": [3000, 8080, 8081, 8082, 9000],
+  "portsAttributes": {
+    "3000": {
+      "label": "Web App",
+      "onAutoForward": "notify"
+    },
+    "8080": {
+      "label": "Primary Service",
+      "onAutoForward": "notify"
+    },
+    "8081": {
+      "label": "Secondary Service",
+      "onAutoForward": "notify"
+    },
+    "8082": {
+      "label": "Database/Admin",
+      "onAutoForward": "notify"
+    },
+    "9000": {
+      "label": "Monitoring",
+      "onAutoForward": "notify"
+    }
+  },
+  "remoteUser": "vscode",
+  "workspaceFolder": "/workspaces/docker-rocky-learning"
+}
