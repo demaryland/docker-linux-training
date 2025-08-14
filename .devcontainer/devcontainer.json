@@ -9,7 +9,7 @@
     },
     "ghcr.io/devcontainers/features/common-utils:2": {
       "installZsh": "true",
-      "configureZshAsDefaultShell": "true",
+      "configureZshAsDefaultShell": "false",
       "installOhMyZsh": "true",
       "upgradePackages": "true",
       "username": "vscode"

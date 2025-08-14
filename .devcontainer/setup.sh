@@ -124,6 +124,20 @@ EOF
 # Set proper ownership
 chown -R vscode:vscode /home/vscode
 
+# Configure zsh as default shell for vscode user (manual approach)
+echo "🐚 Configuring zsh as default shell..."
+if command -v zsh >/dev/null 2>&1; then
+    # Install util-linux-user to get chsh command
+    dnf install -y util-linux-user
+    
+    # Change shell for vscode user
+    chsh -s /usr/bin/zsh vscode
+    
+    echo "✅ Zsh configured as default shell for vscode user"
+else
+    echo "⚠️  Zsh not found, skipping shell configuration"
+fi
+
 # Create course directory structure
 echo "📚 Setting up course structure..."
 mkdir -p /workspaces/docker-linux-training/{modules,shared-resources,final-project,instructor-notes}
