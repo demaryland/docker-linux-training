@@ -1,6 +1,6 @@
 {
   "name": "Docker & Rocky Linux Learning Environment",
-  "image": "rockylinux:9",
+  "image": "registry.access.redhat.com/ubi9/ubi:latest",
   "features": {
     "ghcr.io/devcontainers/features/docker-in-docker:2": {
       "version": "latest",

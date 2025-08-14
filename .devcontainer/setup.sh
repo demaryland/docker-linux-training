@@ -148,7 +148,7 @@ cat > /usr/local/bin/sysinfo << 'EOF'
 #!/bin/bash
 echo "🖥️  System Information"
 echo "===================="
-echo "OS: $(cat /etc/rocky-release)"
+echo "OS: $(cat /etc/redhat-release 2>/dev/null || cat /etc/os-release | grep PRETTY_NAME | cut -d'"' -f2)"
 echo "Kernel: $(uname -r)"
 echo "Docker: $(docker --version 2>/dev/null || echo 'Not running')"
 echo "User: $(whoami)"
