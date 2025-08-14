@@ -126,8 +126,8 @@ chown -R vscode:vscode /home/vscode
 
 # Create course directory structure
 echo "📚 Setting up course structure..."
-mkdir -p /workspaces/docker-rocky-learning/{modules,shared-resources,final-project,instructor-notes}
-mkdir -p /workspaces/docker-rocky-learning/shared-resources/{cheat-sheets,troubleshooting-guides,sample-apps,diagrams}
+mkdir -p /workspaces/docker-linux-training/{modules,shared-resources,final-project,instructor-notes}
+mkdir -p /workspaces/docker-linux-training/shared-resources/{cheat-sheets,troubleshooting-guides,sample-apps,diagrams}
 
 # Create a quick system info script
 cat > /usr/local/bin/sysinfo << 'EOF'
