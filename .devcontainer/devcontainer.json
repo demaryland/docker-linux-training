@@ -12,9 +12,7 @@
       "configureZshAsDefaultShell": "true",
       "installOhMyZsh": "true",
       "upgradePackages": "true",
-      "username": "vscode",
-      "uid": "1000",
-      "gid": "1000"
+      "username": "vscode"
     },
     "ghcr.io/devcontainers/features/git:1": {
       "version": "latest",
