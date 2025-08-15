@@ -1,8 +1,8 @@
-# 🐳 Docker & Red Hat Enterprise Linux Learning Journey
+# 🐳 Docker & Ubuntu Linux Learning Journey
 
 **From Windows to Containers: A Hands-On Learning Adventure**
 
-Welcome to your journey from Windows IT professional to Linux container expert! This course is designed specifically for IT operations team members who are comfortable with Windows environments and want to master Docker containers on Red Hat Enterprise Linux (using UBI9).
+Welcome to your journey from Windows IT professional to Linux container expert! This course is designed specifically for IT operations team members who are comfortable with Windows environments and want to master Docker containers on Ubuntu Linux, while learning how concepts translate to RHEL-based systems.
 
 ## 🎯 Course Overview
 
@@ -16,7 +16,8 @@ This isn't just another technical manual - it's your guided adventure into the w
 
 ### What You'll Learn
 By the end of this journey, you'll be able to:
-- Navigate Red Hat Enterprise Linux like a pro (goodbye C:\ drives!)
+- Navigate Ubuntu Linux like a pro (goodbye C:\ drives!)
+- Understand key differences between Ubuntu and RHEL-based systems
 - Deploy and manage Docker containers confidently
 - Build custom container images for web applications
 - Orchestrate multi-container applications
@@ -33,23 +34,24 @@ By the end of this journey, you'll be able to:
 ### Launch Your Learning Environment
 1. **Fork this repository** to your GitHub account
 2. **Open in GitHub Codespaces** - click the green "Code" button and select "Create codespace on main"
-3. **Wait for the magic** - your Red Hat Enterprise Linux environment with Docker will be ready in a few minutes
+3. **Wait for the magic** - your Ubuntu Linux environment with Docker will be ready in a few minutes
 4. **Start with Module 1** and begin your container journey!
 
 ## 📚 Course Modules
 
-### 🚀 [Module 1: Welcome to Red Hat Enterprise Linux - Your New Command Center](modules/01-rocky-linux-basics/)
+### 🚀 [Module 1: Welcome to Ubuntu Linux - Your New Command Center](modules/01-ubuntu-linux-basics/)
 *"Trading PowerShell for Bash - It's not so scary!"*
 - Windows vs Linux command translations
+- Ubuntu vs RHEL system differences
 - File system navigation and permissions
-- Package management with dnf
+- Package management with apt (and how it compares to dnf)
 - Setting up your workspace
 - Complete with 5 hands-on lessons
 
 ### 🐳 [Module 2: Meet Docker - Your Application Packaging Superhero](modules/02-docker-fundamentals/)
 *"Think of containers like really smart ZIP files that can run"*
 - Container concepts and benefits
-- Docker installation and first steps
+- Docker installation on Ubuntu (with RHEL notes)
 - Running your first web server
 - Container lifecycle management
 - Complete with 5 hands-on lessons
@@ -59,7 +61,7 @@ By the end of this journey, you'll be able to:
 - Understanding Docker images
 - Writing Dockerfiles
 - Building custom images
-- Working with Red Hat Universal Base Images
+- Working with Ubuntu base images (and Universal Base Images)
 - Module structure ready for lesson development
 
 ### 🌐 [Module 4: Connecting the Dots - Networking and Storage](modules/04-networking-storage/)
@@ -104,10 +106,35 @@ Each module includes practical labs with:
 - Extension challenges for advanced learners
 
 ### 📖 Learning Resources
-- **Cheat Sheets**: Quick reference guides
+- **Cheat Sheets**: Quick reference guides with Ubuntu and RHEL comparisons
 - **Troubleshooting Guides**: Common issues and solutions
 - **Visual Diagrams**: Network and architecture illustrations
 - **"Oops!" Sections**: Learn from common mistakes
+- **Ubuntu vs RHEL**: Side-by-side comparisons throughout
+
+## 🔄 Ubuntu vs RHEL Learning Approach
+
+This course uses Ubuntu as the primary learning platform while teaching you about RHEL differences:
+
+### Why Ubuntu First?
+- **Beginner-friendly** - Great package management and documentation
+- **Widely used** - Popular in cloud and development environments
+- **Docker-friendly** - Excellent Docker support and integration
+- **Clean foundation** - Learn core concepts without complexity
+
+### RHEL Knowledge Integration
+Throughout the course, you'll see:
+- 📦 **Package Management**: `apt` vs `dnf` comparisons
+- 🔧 **Command Differences**: Ubuntu and RHEL side-by-side
+- 📁 **File Locations**: Where things differ between distributions
+- 🏢 **Enterprise Focus**: When and why to choose RHEL
+
+### Real-World Preparation
+By the end, you'll understand:
+- How to work in Ubuntu environments
+- How to adapt skills to RHEL/CentOS systems
+- When to choose each distribution
+- How Docker works the same on both
 
 ## 🎯 Final Project
 
@@ -127,7 +154,7 @@ Put it all together by deploying a complete web service stack including:
 
 ## 📋 Course Progress Tracker
 
-- [ ] Module 1: Red Hat Enterprise Linux Basics
+- [ ] Module 1: Ubuntu Linux Basics (with RHEL comparisons)
 - [ ] Module 2: Docker Fundamentals  
 - [ ] Module 3: Building Images
 - [ ] Module 4: Networking & Storage
@@ -139,9 +166,39 @@ Put it all together by deploying a complete web service stack including:
 
 ## 🌟 Ready to Begin?
 
-Your container journey starts now! Head over to [Module 1](modules/01-rocky-linux-basics/) and let's transform you from a Windows professional into a Linux container expert.
+Your container journey starts now! Head over to [Module 1](modules/01-ubuntu-linux-basics/) and let's transform you from a Windows professional into a Linux container expert.
 
 Remember: Every expert was once a beginner. The only difference is they started!
+
+---
+
+## 🔍 Quick Reference
+
+### Ubuntu Package Management
+```bash
+sudo apt update              # Update package lists
+sudo apt install package    # Install a package
+apt search keyword          # Search for packages
+sudo apt remove package     # Remove a package
+apt list --installed        # List installed packages
+```
+
+### RHEL Equivalent Commands
+```bash
+sudo dnf update             # Update package lists
+sudo dnf install package   # Install a package
+dnf search keyword         # Search for packages
+sudo dnf remove package    # Remove a package
+dnf list installed         # List installed packages
+```
+
+### Docker Commands (Same on Both!)
+```bash
+docker --version           # Check Docker version
+docker run hello-world     # Test Docker installation
+docker ps                  # List running containers
+docker images              # List downloaded images
+```
 
 ---
 

@@ -1,15 +1,16 @@
 # 🔧 Lesson 2: Docker Installation and Setup
 
-*"Getting Docker ready for action on Red Hat Enterprise Linux"*
+*"Getting Docker ready for action on Ubuntu Linux"*
 
 Great! You understand what containers are and why they're amazing. Now let's get Docker installed and configured so you can start using this powerful technology. Don't worry - our learning environment has already done most of the heavy lifting, but understanding the process is crucial for real-world deployments.
 
 ## 🎯 What You'll Learn
 
-- How Docker is installed on RHEL systems
+- How Docker is installed on Ubuntu systems
 - Understanding Docker architecture and components
 - Verifying your Docker installation
 - Basic Docker configuration
+- **Ubuntu vs RHEL**: Installation differences between distributions
 - Security considerations for Docker setup
 - Troubleshooting common installation issues
 
@@ -45,43 +46,96 @@ Before we dive into installation, let's understand what we're installing:
                        └─────────────────┘
 ```
 
-## 📦 Docker Installation on RHEL Systems
+## 📦 Docker Installation on Ubuntu Systems
 
 ### Our Learning Environment
 
-**Good news!** Our learning environment already has Docker installed and configured. But let's understand how it would be done on a real RHEL system.
+**Good news!** Our learning environment already has Docker installed and configured. But let's understand how it would be done on a real Ubuntu system.
 
-### Real-World RHEL Installation Process
+### Real-World Ubuntu Installation Process
 
-On a real Red Hat Enterprise Linux system, you would:
+On a real Ubuntu system, you would:
 
-1. **Add the Docker repository:**
+1. **Update your package lists:**
    ```bash
-   sudo dnf config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+   sudo apt update
    ```
 
-2. **Install Docker:**
+2. **Install prerequisites:**
    ```bash
-   sudo dnf install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+   sudo apt install apt-transport-https ca-certificates curl gnupg lsb-release
    ```
 
-3. **Start and enable Docker:**
+3. **Add Docker's official GPG key:**
+   ```bash
+   curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+   ```
+
+4. **Add Docker repository:**
+   ```bash
+   echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+   ```
+
+5. **Install Docker:**
+   ```bash
+   sudo apt update
+   sudo apt install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+   ```
+
+6. **Start and enable Docker:**
    ```bash
    sudo systemctl start docker
    sudo systemctl enable docker
    ```
 
-4. **Add your user to the docker group:**
+7. **Add your user to the docker group:**
    ```bash
    sudo usermod -aG docker $USER
    ```
 
-5. **Log out and back in** (or restart) for group changes to take effect.
+8. **Log out and back in** (or restart) for group changes to take effect.
+
+## 🔄 Ubuntu vs RHEL Installation Comparison
+
+Here's how Docker installation differs between Ubuntu and RHEL:
+
+### Ubuntu Installation
+```bash
+# Add Docker repository
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+
+# Install Docker
+sudo apt update
+sudo apt install docker-ce docker-ce-cli containerd.io
+
+# Start Docker
+sudo systemctl start docker
+sudo systemctl enable docker
+```
+
+### RHEL Installation
+```bash
+# Add Docker repository
+sudo dnf config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+
+# Install Docker
+sudo dnf install docker-ce docker-ce-cli containerd.io
+
+# Start Docker
+sudo systemctl start docker
+sudo systemctl enable docker
+```
+
+### Key Differences
+- **Package manager**: Ubuntu uses `apt`, RHEL uses `dnf`
+- **Repository setup**: Different GPG keys and repository URLs
+- **Package names**: Same Docker packages, different base system packages
+- **Service management**: Both use `systemctl` (identical commands!)
 
 ### What Our Environment Does
 
 Our setup script automatically:
-- ✅ Installs Docker Engine
+- ✅ Installs Docker Engine using the devcontainer feature
 - ✅ Starts the Docker service
 - ✅ Adds your user to the docker group
 - ✅ Configures Docker for development use
@@ -188,11 +242,11 @@ Let's thoroughly test your Docker installation!
 
 1. **Run a simple interactive container:**
    ```bash
-   docker run -it ubuntu:20.04 bash
+   docker run -it ubuntu:22.04 bash
    ```
 
    This will:
-   - Download Ubuntu 20.04 image
+   - Download Ubuntu 22.04 image
    - Start an interactive container
    - Give you a bash shell inside the container
 
@@ -201,6 +255,7 @@ Let's thoroughly test your Docker installation!
    whoami          # You're root inside the container
    ls /            # See the Ubuntu file system
    cat /etc/os-release  # Check the OS version
+   apt update      # Update package lists (inside container)
    exit            # Exit the container
    ```
 
@@ -334,6 +389,23 @@ docker image prune
 docker volume prune
 ```
 
+### Ubuntu vs RHEL Troubleshooting
+
+**Ubuntu-specific issues:**
+- Package conflicts with `snap` Docker installation
+- AppArmor security policies
+- UFW firewall rules
+
+**RHEL-specific issues:**
+- SELinux security contexts
+- Firewalld configuration
+- Subscription manager conflicts
+
+**Common solutions work on both:**
+- Service management with `systemctl`
+- User group management
+- Docker daemon configuration
+
 ## 🏆 Knowledge Check
 
 Before moving on, make sure you can:
@@ -343,6 +415,7 @@ Before moving on, make sure you can:
 - [ ] Check Docker system information
 - [ ] Troubleshoot basic Docker issues
 - [ ] Understand Docker security considerations
+- [ ] Know the differences between Ubuntu and RHEL Docker installation
 
 ## 🎯 Quick Challenge
 
@@ -364,8 +437,8 @@ docker info
 docker run hello-world
 
 # Interactive test
-docker run -it ubuntu:20.04 bash
-# (inside container) whoami && exit
+docker run -it ubuntu:22.04 bash
+# (inside container) whoami && apt update && exit
 
 # Check what we created
 docker images
@@ -376,9 +449,26 @@ docker container prune
 docker image prune
 ```
 
+## 🔄 RHEL Equivalent Commands
+
+If you were doing this on a RHEL system, the Docker commands would be identical:
+
+```bash
+# Same Docker commands work on both Ubuntu and RHEL!
+docker --version
+docker info
+docker run hello-world
+docker run -it registry.access.redhat.com/ubi8/ubi bash
+```
+
+The only differences are:
+- Installation process (dnf vs apt)
+- Base images (Ubuntu vs RHEL UBI)
+- System-specific troubleshooting
+
 ## 🚀 What's Next?
 
-Perfect! Docker is installed and working. In the next lesson, [Your First Container Adventure](03-first-container.md), we'll start running real containers and learn the fundamental Docker commands you'll use every day.
+Perfect! Docker is installed and working on Ubuntu. In the next lesson, [Your First Container Adventure](03-first-container.md), we'll start running real containers and learn the fundamental Docker commands you'll use every day.
 
 ## 📝 Quick Reference Card
 
@@ -393,12 +483,12 @@ docker system df           # Show disk usage
 docker system prune        # Clean up unused resources
 docker system events       # Show real-time events
 
-# Service management (RHEL)
+# Service management (Ubuntu & RHEL)
 systemctl status docker    # Check Docker service
 systemctl start docker     # Start Docker service
 systemctl enable docker    # Enable on boot
 
-# User management
+# User management (Ubuntu & RHEL)
 groups                     # Check group membership
 sudo usermod -aG docker $USER  # Add user to docker group
 ```
@@ -410,7 +500,17 @@ sudo usermod -aG docker $USER  # Add user to docker group
 3. **Keep Docker updated** for security and features
 4. **Monitor Docker logs** with `journalctl -u docker`
 5. **Use resource limits** in production environments
+6. **Docker commands are identical** on Ubuntu and RHEL - learn once, use everywhere!
 
 ---
 
-*"A journey of a thousand containers begins with a single installation."* - Your Docker environment is ready! 🐳
+*"A journey of a thousand containers begins with a single installation."* - Your Docker environment is ready on Ubuntu! 🐳
+
+### 🎓 Ubuntu vs RHEL Summary
+
+You've learned Docker installation concepts that apply to both:
+- **Ubuntu skills**: `apt` package management, Ubuntu-specific troubleshooting
+- **RHEL awareness**: `dnf` package management, enterprise considerations
+- **Universal Docker skills**: All Docker commands work identically on both platforms
+
+The beauty of Docker is that once it's installed, the experience is identical regardless of the underlying Linux distribution!

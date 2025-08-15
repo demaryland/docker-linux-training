@@ -1,5 +1,5 @@
 {
-  "name": "Docker & Red Hat Enterprise Linux Learning Environment",
+  "name": "Docker & Ubuntu Linux Learning Environment",
   "image": "ubuntu:22.04",
   "features": {
     "ghcr.io/devcontainers/features/docker-in-docker:2": {
